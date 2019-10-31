@@ -11,4 +11,5 @@ tell application "Spotify"
   play track "'$playlist'"
   set sound volume to 100
 end tell
-quit app "Mail"'
+quit app "Mail"
+tell application "System Events" to click (first button of (every window of (application process "Spotify")) whose role description is "minimize button")'
