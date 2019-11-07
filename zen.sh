@@ -2,20 +2,33 @@
 
 playlist='spotify:playlist:37i9dQZF1DWZeKCadgRdKQ'
 
+# Play soothing music on Spotify
 osascript -e '
+log "Playing some soothing music on Spotify ..."
 set volume output volume 5
 tell application "Spotify"
-  activate
   set shuffling to true
   set repeating to true
   play track "'$playlist'"
   set sound volume to 100
-end tell
+  log track
+  set c to the current track
+  log the "Spotify is playing " & name of c & " by " & artist of c as text
+end tell'
+
+# Close distracting applications
+osascript -e '
+log "Closing distracting applications ..."
 quit app "Mail"
-tell application "System Events" to click (first button of (every window of (application process "Spotify")) whose role description is "minimize button")
-set closeURLs to {"reddit", "bbc", "theguardian"}
+log "Finished closing distracting applications"'
+
+# Close distracting websites
+osascript -e '
+log "Closing distracting websites ..."
+set closeURLs to {"reddit", "bbc", "theguardian", "calendar.google.com"}
 repeat with theURL in closeURLs
     tell application "Safari"
         close (every tab of every window whose name contains theURL)
     end tell
-end repeat'
+end repeat
+log "Finished closing distracting websites ..."'
