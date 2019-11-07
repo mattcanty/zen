@@ -1,6 +1,6 @@
 #!/bin/sh
 
-playlist='spotify:playlist:37i9dQZF1DX4sWSpwq3LiO'
+playlist='spotify:playlist:37i9dQZF1DWZeKCadgRdKQ'
 
 osascript -e '
 set volume output volume 5
